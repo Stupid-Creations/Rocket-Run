@@ -10,7 +10,6 @@ PImage E;
 PImage deb;
 PImage mo;
 PImage TS;
-//1.7
 void setup() {
   frameRate(60);
   noStroke();
@@ -44,7 +43,7 @@ boolean press = false;
 
 int menu = 1;
 int angle = 0;
-int fuel = 1600;
+int fuel = 2000;
 int count = 0;
 
 
@@ -147,7 +146,6 @@ void draw() {
     if (ima.x>400)ima.x=-400;
     if (imb.x>400)imb.x =-400;
 
-    // Debris stack
     for (int i = 0; i<debris.size(); i++) {
       debris.get(i).image = deb;
       debris.get(i).render(new PVector(0, 0));
@@ -158,7 +156,6 @@ void draw() {
       if (col.get(i) == 1)menu = 3;
       debris.get(i).pos.x -= player.velocity.x;
     }
-    // Earth stack
     if (Earth.pos.x < 400 && Earth.pos.x > 0 ) player.update(Earth, 0.05);
     if (moon.pos.x < 400 && moon.pos.x > 0 ) player.update(moon, 0.025);
     int  a = Earth.check_col(player); 
@@ -173,7 +170,6 @@ void draw() {
     moon.render(new PVector(-30, -23));
     Earth.pos.x -= player.velocity.x;
     moon.pos.x -= player.velocity.x;
-    // player stack
     if (!keyPressed) {
       count = 0;
       state = "off.png";
